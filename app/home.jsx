@@ -91,6 +91,7 @@ const styles = StyleSheet.create({
     color: '#555',
     textAlign: 'center',
   },
+  
   boton: {
     width: '80%',
     marginTop: 10,
