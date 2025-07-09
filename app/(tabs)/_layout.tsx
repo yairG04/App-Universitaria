@@ -73,3 +73,5 @@ export default function TabLayout() {
     </Tabs>
   );
 }
+
+//ajuste de Navegacion tabs
