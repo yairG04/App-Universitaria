@@ -1,0 +1,12 @@
+{
+  "expo": {
+    "extra": {
+      "eas": {
+        "projectId": "c19c77db-ef2d-4e1b-a04a-addfbd691068"
+      }
+    },
+    "android": {
+      "package": "com.joseph23.store"
+    }
+  }
+}
