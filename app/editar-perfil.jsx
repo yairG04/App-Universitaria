@@ -12,7 +12,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ThemedView } from '@/components/ThemedView';
 import { ThemedText } from '@/components/ThemedText';
 import { useRouter } from 'expo-router';
-
+// Componente principal para editar el perfil del usuario
 export default function EditarPerfilScreen() {
   const [perfil, setPerfil] = useState({
     nombre_completo: '',
