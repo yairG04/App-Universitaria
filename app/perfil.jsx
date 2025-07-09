@@ -23,7 +23,7 @@ export default function PerfilScreen() {
     setCargando(true);
     const correo = await AsyncStorage.getItem('correo');
     if (!correo) return;
-
+// Petición al backend para obtener los datos del perfil
     try {
       const res = await fetch(
         `http://apliacionmovil.atwebpages.com/perfil.php?correo=${correo}`
