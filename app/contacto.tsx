@@ -74,7 +74,7 @@ export default function ContactoScreen() {
           <View style={styles.columnSmall}>
             <Text style={styles.label}>📞 Teléfono</Text>
             <TouchableOpacity onPress={() => Linking.openURL('tel:(507) 935-1766,(507) 935-1767')}>
-              <Text style={styles.link}>(507) 935-1767, (507) 935-1766</Text>
+              <Text style={styles.link}> (507) 935-1766</Text>
             </TouchableOpacity>
           </View>
         </View>
