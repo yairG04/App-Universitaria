@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {
   Alert,
   Linking,
+  Platform,
   ScrollView,
   StyleSheet,
   Text,
@@ -14,18 +15,25 @@ import { useRouter } from 'expo-router';
 
 export default function ContactoScreen() {
   const router = useRouter();
-  const [nombre, setNombre] = useState('');
-  const [correo, setCorreo] = useState('');
-  const [mensaje, setMensaje] = useState('');
+  const [nombre, setNombre] = useState<string>('');
+  const [correo, setCorreo] = useState<string>('');
+  const [mensaje, setMensaje] = useState<string>('');
+
+  const mostrarAlerta = (titulo: string, mensaje: string) => {
+    if (Platform.OS === 'web') {
+      alert(`${titulo}\n${mensaje}`);
+    } else {
+      Alert.alert(titulo, mensaje);
+    }
+  };
 
   const enviarFormulario = () => {
     if (!nombre || !correo || !mensaje) {
-      Alert.alert('Campos incompletos', 'Por favor completa todos los campos.');
+      mostrarAlerta('Campos incompletos', 'Por favor completa todos los campos.');
       return;
     }
 
-    // Aquí simulas que el mensaje fue enviado exitosamente
-    Alert.alert('Mensaje enviado', 'Tu solicitud ha sido enviada exitosamente.');
+    mostrarAlerta('Mensaje enviado', 'Tu solicitud ha sido enviada exitosamente.');
     setNombre('');
     setCorreo('');
     setMensaje('');
@@ -37,7 +45,6 @@ export default function ContactoScreen() {
       <Text style={styles.subtitulo}>Universidad de Panamá</Text>
 
       <View style={styles.card}>
-        {/* Fila 1 */}
         <View style={styles.row}>
           <View style={styles.column}>
             <Text style={styles.label}>🌐 Sitio Web</Text>
@@ -54,7 +61,6 @@ export default function ContactoScreen() {
           </View>
         </View>
 
-        {/* Fila 2 */}
         <View style={styles.row}>
           <View style={styles.columnSmall}>
             <Text style={styles.label}>📷 Instagram</Text>

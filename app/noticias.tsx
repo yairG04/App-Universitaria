@@ -1,12 +1,12 @@
 import { useRouter } from 'expo-router';
 import React from 'react';
 import {
-    Image,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from 'react-native';
 
 const noticias = [
@@ -22,7 +22,7 @@ const noticias = [
     titulo: 'Ceremonia de Bienvenida para Primer Ingreso',
     fecha: '24 de marzo de 2025',
     descripcion:
-      'El CRUV dio la bienvenida a los nuevos estudiantes con una jornada llena de actividades y charlas .',
+      'El CRUV dio la bienvenida a los nuevos estudiantes con una jornada llena de actividades y charlas.',
     imagen:
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRcyp5lYwnsrL5wBWmPs9oUq9g6DSjWioJhg&s',
   },
@@ -40,7 +40,7 @@ export default function NoticiasScreen() {
   const router = useRouter();
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={styles.container} contentContainerStyle={{ paddingBottom: 40 }}>
       <Text style={styles.tituloPrincipal}>Noticias Universitarias</Text>
 
       {noticias.map((noticia, index) => (
@@ -49,7 +49,6 @@ export default function NoticiasScreen() {
             <Image
               source={{ uri: noticia.imagen }}
               style={styles.imagen}
-              resizeMode="contain"
             />
           </View>
           <Text style={styles.titulo}>{noticia.titulo}</Text>
@@ -58,7 +57,11 @@ export default function NoticiasScreen() {
         </View>
       ))}
 
-      <TouchableOpacity style={styles.boton} onPress={() => router.replace('/home')}>
+      <TouchableOpacity
+        style={styles.boton}
+        activeOpacity={0.8}
+        onPress={() => router.replace('/home')}
+      >
         <Text style={styles.botonTexto}>Volver al menú principal</Text>
       </TouchableOpacity>
     </ScrollView>
@@ -67,66 +70,76 @@ export default function NoticiasScreen() {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 16,
-    backgroundColor: '#fdfdfd',
+    backgroundColor: '#fafafa',
+    paddingHorizontal: 16,
+    paddingTop: 24,
   },
   tituloPrincipal: {
-    fontSize: 24,
+    fontSize: 28,
     fontWeight: 'bold',
-    color: '#0A2C56',
+    color: '#003366',
     textAlign: 'center',
-    marginVertical: 20,
+    marginBottom: 24,
   },
   card: {
-    backgroundColor: '#ffffff',
-    padding: 16,
-    borderRadius: 12,
-    marginBottom: 20,
-    borderWidth: 1,
-    borderColor: '#ddd',
+    backgroundColor: '#fff',
+    borderRadius: 14,
+    marginBottom: 24,
+    overflow: 'hidden',
+    shadowColor: '#000',
+    shadowOpacity: 0.1,
+    shadowRadius: 10,
+    shadowOffset: { width: 0, height: 5 },
+    elevation: 4,
   },
   imagenContainer: {
     width: '100%',
-    height: 120,
+    height: 180,
+    backgroundColor: '#ddd',
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 10,
-    borderRadius: 10,
-    overflow: 'hidden',
-    backgroundColor: '#f0f0f0', // para mejor visual si la imagen es más pequeña
   },
   imagen: {
-    width: '100%',
+    width: '60%',           // ajusta el ancho
     height: '100%',
+    resizeMode: 'cover',
+    alignSelf: 'center',
   },
   titulo: {
-    fontSize: 18,
-    fontWeight: '600',
+    fontSize: 20,
+    fontWeight: '700',
     color: '#004080',
-    marginBottom: 4,
+    marginHorizontal: 16,
+    marginTop: 16,
   },
   fecha: {
     fontSize: 14,
-    color: '#666',
-    marginBottom: 8,
+    color: '#888',
+    marginHorizontal: 16,
+    marginTop: 6,
+    fontStyle: 'italic',
   },
   descripcion: {
-    fontSize: 15,
+    fontSize: 16,
     color: '#333',
+    marginHorizontal: 16,
+    marginVertical: 16,
+    lineHeight: 22,
   },
   boton: {
-    marginTop: 30,
     backgroundColor: '#004080',
-    paddingVertical: 12,
-    paddingHorizontal: 24,
-    borderRadius: 8,
-    alignItems: 'center',
+    paddingVertical: 14,
+    paddingHorizontal: 32,
+    borderRadius: 30,
     alignSelf: 'center',
-    marginBottom: 30,
+    shadowColor: '#004080',
+    shadowOpacity: 0.6,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 4 },
   },
   botonTexto: {
     color: '#fff',
-    fontWeight: 'bold',
-    fontSize: 15,
+    fontWeight: '700',
+    fontSize: 16,
   },
 });
